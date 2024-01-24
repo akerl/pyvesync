@@ -2023,6 +2023,7 @@ class VeSyncSuperior6000S(VeSyncBaseDevice):
     def __init__(self, details, manager):
         """Initialize Superior 6000S Humidifier class."""
         super().__init__(details, manager)
+        self.enabled = True
         self.config_dict = model_features(self.device_type)
         self.mist_levels = self.config_dict.get('mist_levels')
         self.mist_modes = self.config_dict.get('mist_modes')
@@ -2063,8 +2064,10 @@ class VeSyncSuperior6000S(VeSyncBaseDevice):
     def build_humid_dict(self, dev_dict: Dict[str, str]) -> None:
         """Build humidifier status dictionary."""
         self.device_status = 'off' if dev_dict.get('powerSwitch', 0) == 0 else 'on'
+        self.enabled =  dev_dict.get('powerSwitch', 0) != 0
         self.mode = 'auto' if dev_dict.get('workMode', '') == 'autoPro' \
             else dev_dict.get('workMode', '')
+        self.config['automatic_stop'] = self.mode == 'auto'
         self.details['humidity'] = dev_dict.get('humidity', 0)
         self.details['target_humidity'] = dev_dict.get('targetHumidity', None)
         self.details['mist_virtual_level'] = dev_dict.get(
