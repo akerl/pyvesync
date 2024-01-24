@@ -2067,9 +2067,11 @@ class VeSyncSuperior6000S(VeSyncBaseDevice):
         self.enabled =  dev_dict.get('powerSwitch', 0) != 0
         self.mode = 'auto' if dev_dict.get('workMode', '') == 'autoPro' \
             else dev_dict.get('workMode', '')
+        self.details['mode'] = self.mode
         self.config['automatic_stop'] = self.mode == 'auto'
         self.details['humidity'] = dev_dict.get('humidity', 0)
         self.details['target_humidity'] = dev_dict.get('targetHumidity', None)
+        self.config['auto_target_humidity'] = dev_dict.get('targetHumidity', None)
         self.details['mist_virtual_level'] = dev_dict.get(
             'virtualLevel', 0)
         self.details['mist_level'] = dev_dict.get('mistLevel', 0)
