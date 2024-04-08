@@ -28,8 +28,8 @@ See Also
 
 import logging
 import math
-from pyvesync.vesync import object_factory
-from pyvesync.vesyncbulb import pct_to_kelvin
+from pyvesyncakerl.vesync import object_factory
+from pyvesyncakerl.vesyncbulb import pct_to_kelvin
 from utils import TestBase, assert_test, parse_args, Defaults
 import call_json
 import call_json_bulbs

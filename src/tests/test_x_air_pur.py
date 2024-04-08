@@ -1,6 +1,6 @@
 """Levoit Air Purifier tests."""
-from pyvesync.vesyncfan import VeSyncAir131, VeSyncAirBypass
-from pyvesync.helpers import Helpers as helpers
+from pyvesyncakerl.vesyncfan import VeSyncAir131, VeSyncAirBypass
+from pyvesyncakerl.helpers import Helpers as helpers
 import call_json
 import call_json_fans
 from utils import TestBase, Defaults

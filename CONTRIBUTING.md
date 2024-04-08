@@ -3,21 +3,21 @@
 1. Git clone the repository
 
 ```bash
-git clone https://github.com/webdjoe/pyvesync && cd pyvesync
+git clone https://github.com/webdjoe/pyvesyncakerl && cd pyvesyncakerl
 ```
 
-2. Create and activate a separate python virtual environment for pyvesync
+2. Create and activate a separate python virtual environment for pyvesyncakerl
 
 ```bash
 # Check Python version is 3.8 or higher
 python3 --version # or python --version or python3.8 --version
 # Create a new venv
-python3 -m venv pyvesync-venv
+python3 -m venv pyvesyncakerl-venv
 # Activate the venv
-source pyvesync-venv/bin/activate
+source pyvesyncakerl-venv/bin/activate
 # or ....
-pyvesync-venv\Scripts\activate.ps1 # on powershell
-pyvesync-venv\Scripts\activate.bat # on command prompt
+pyvesyncakerl-venv\Scripts\activate.ps1 # on powershell
+pyvesyncakerl-venv\Scripts\activate.bat # on command prompt
 
 # Install development tools
 pip install -e .[dev]
@@ -27,15 +27,15 @@ pip install -e .[dev]
 
 If the above steps were executed successfully, you should now have:
 
-- Code directory `pyvesync`(which we cloned from github)
-- Python venv directory `pyvesync` (all the dependencies/libraries are contained here)
+- Code directory `pyvesyncakerl`(which we cloned from github)
+- Python venv directory `pyvesyncakerl` (all the dependencies/libraries are contained here)
 
 Any change in the code will now be directly reflected and can be tested. To deactivate the python venv, simply
 run `deactivate`.
 
 # Testing Python with Tox
 
-Install tox, navigate to the pyvesync repository which contains the tox.ini file, and run tox as follows:
+Install tox, navigate to the pyvesyncakerl repository which contains the tox.ini file, and run tox as follows:
 
 ```bash
 # Run all tests and linters

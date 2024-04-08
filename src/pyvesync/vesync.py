@@ -5,18 +5,18 @@ import re
 import time
 from itertools import chain
 from typing import Tuple
-from pyvesync.helpers import Helpers
-import pyvesync.helpers as helpermodule
-from pyvesync.vesyncbasedevice import VeSyncBaseDevice
-from pyvesync.vesyncbulb import *   # noqa: F403, F401
-import pyvesync.vesyncbulb as bulb_mods
-from pyvesync.vesyncfan import *   # noqa: F403, F401
-import pyvesync.vesyncfan as fan_mods
-from pyvesync.vesyncoutlet import *   # noqa: F403, F401
-import pyvesync.vesyncoutlet as outlet_mods
-from pyvesync.vesyncswitch import *   # noqa: F403, F401
-import pyvesync.vesynckitchen as kitchen_mods
-import pyvesync.vesyncswitch as switch_mods
+from pyvesyncakerl.helpers import Helpers
+import pyvesyncakerl.helpers as helpermodule
+from pyvesyncakerl.vesyncbasedevice import VeSyncBaseDevice
+from pyvesyncakerl.vesyncbulb import *   # noqa: F403, F401
+import pyvesyncakerl.vesyncbulb as bulb_mods
+from pyvesyncakerl.vesyncfan import *   # noqa: F403, F401
+import pyvesyncakerl.vesyncfan as fan_mods
+from pyvesyncakerl.vesyncoutlet import *   # noqa: F403, F401
+import pyvesyncakerl.vesyncoutlet as outlet_mods
+from pyvesyncakerl.vesyncswitch import *   # noqa: F403, F401
+import pyvesyncakerl.vesynckitchen as kitchen_mods
+import pyvesyncakerl.vesyncswitch as switch_mods
 
 logger = logging.getLogger(__name__)
 

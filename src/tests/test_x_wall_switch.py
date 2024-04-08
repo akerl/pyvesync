@@ -1,9 +1,9 @@
 import pytest
 from unittest.mock import patch
 import logging
-from pyvesync import VeSync
-from pyvesync.vesyncswitch import VeSyncWallSwitch
-from pyvesync.helpers import Helpers as helpers
+from pyvesyncakerl import VeSync
+from pyvesyncakerl.vesyncswitch import VeSyncWallSwitch
+from pyvesyncakerl.helpers import Helpers as helpers
 import call_json
 import call_json_switches
 
@@ -23,7 +23,7 @@ DEFAULTS = call_json.Defaults
 class TestVesyncWallSwitch(object):
     @pytest.fixture()
     def api_mock(self, caplog):
-        self.mock_api_call = patch('pyvesync.helpers.Helpers.call_api')
+        self.mock_api_call = patch('pyvesyncakerl.helpers.Helpers.call_api')
         self.mock_api = self.mock_api_call.start()
         self.mock_api.create_autospect()
         self.mock_api.return_value.ok = True

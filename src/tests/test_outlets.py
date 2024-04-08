@@ -28,7 +28,7 @@ See Also
 
 import pytest
 import logging
-from pyvesync.vesync import object_factory
+from pyvesyncakerl.vesync import object_factory
 from utils import TestBase, assert_test, parse_args
 import call_json
 import call_json_outlets

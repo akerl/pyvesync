@@ -18,9 +18,9 @@ import yaml
 from collections import defaultdict, namedtuple
 from unittest.mock import patch
 from requests.structures import CaseInsensitiveDict
-from pyvesync.vesync import VeSync
-from pyvesync.helpers import Color
-import pyvesync.helpers as vs_helpers
+from pyvesyncakerl.vesync import VeSync
+from pyvesyncakerl.helpers import Color
+import pyvesyncakerl.helpers as vs_helpers
 
 
 logger = logging.getLogger(__name__)
@@ -363,7 +363,7 @@ class TestBase:
         ------
         Class instance with mocked call_api() function and VeSync object
         """
-        self.mock_api_call = patch('pyvesync.helpers.Helpers.call_api')
+        self.mock_api_call = patch('pyvesyncakerl.helpers.Helpers.call_api')
         self.caplog = caplog
         self.mock_api = self.mock_api_call.start()
         self.mock_api.create_autospect()
@@ -379,7 +379,7 @@ class TestBase:
 
 def assert_test(test_func, all_kwargs, dev_type=None,
                  write_api=False, overwrite=False):
-    """Test pyvesync API calls against existing API.
+    """Test pyvesyncakerl API calls against existing API.
 
     Set `write_api=True` to True to write API call data to YAML file. 
     This will not overwrite existing data unless overwrite is True.

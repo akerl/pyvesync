@@ -5,8 +5,8 @@ import time
 from functools import wraps
 from typing import Optional, Union, Set
 from dataclasses import dataclass
-from pyvesync.vesyncbasedevice import VeSyncBaseDevice
-from pyvesync.helpers import Helpers as helpers
+from pyvesyncakerl.vesyncbasedevice import VeSyncBaseDevice
+from pyvesyncakerl.helpers import Helpers as helpers
 
 logger = logging.getLogger(__name__)
 

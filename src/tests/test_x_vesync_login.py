@@ -3,9 +3,9 @@
 import logging
 import pytest
 from unittest.mock import patch
-import pyvesync
-from pyvesync.vesync import VeSync
-from pyvesync.helpers import Helpers as helpers
+import pyvesyncakerl
+from pyvesyncakerl.vesync import VeSync
+from pyvesyncakerl.helpers import Helpers as helpers
 
 login_test_vals = [
     ('sam@mail.com', 'pass', 'America/New_York', 'full corret'),
@@ -28,7 +28,7 @@ def test_vesync_init(email, password, timezone, testid):
     if testid == 'full correct':
         assert v_inst.time_zone == timezone
     elif testid in ('invalid tz', 'none tz', 'non tz pass', 'empty tz'):
-        assert v_inst.time_zone == pyvesync.helpers.DEFAULT_TZ
+        assert v_inst.time_zone == pyvesyncakerl.helpers.DEFAULT_TZ
 
 
 login_bad_call = [
@@ -46,7 +46,7 @@ class TestLogin(object):
     @pytest.fixture()
     def api_mock(self, caplog):
         """Mock call_api and initialize VeSync device."""
-        self.mock_api_call = patch('pyvesync.helpers.Helpers.call_api')
+        self.mock_api_call = patch('pyvesyncakerl.helpers.Helpers.call_api')
         self.mock_api = self.mock_api_call.start()
         self.mock_api.create_autospec()
         self.mock_api.return_value.ok = True

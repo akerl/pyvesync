@@ -33,7 +33,7 @@ METHOD_RESPONSES['DEV_TYPE']['set_status'] = status_response
 METHOD_RESPONSES['DEVTYPE'].default_factory = lambda: ({"code": 0, "msg": "success"}, 200)
 """
 from copy import deepcopy
-from pyvesync import vesyncfan, helpers
+from pyvesyncakerl import vesyncfan, helpers
 from utils import Defaults, FunctionResponses
 
 HUMID_MODELS = []

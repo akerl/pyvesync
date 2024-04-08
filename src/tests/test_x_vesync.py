@@ -5,8 +5,8 @@ import importlib
 from unittest import mock
 from unittest.mock import patch, Mock, MagicMock
 
-from pyvesync import VeSync
-from pyvesync.helpers import Helpers
+from pyvesyncakerl import VeSync
+from pyvesyncakerl.helpers import Helpers
 
 
 class TestVesync(unittest.TestCase):
@@ -34,10 +34,10 @@ class TestVesync(unittest.TestCase):
 
     def test_imports(self):
         """Test that __all__ contains only names that are actually exported."""
-        modules = ['pyvesync.vesyncfan',
-                   'pyvesync.vesyncbulb',
-                   'pyvesync.vesyncoutlet',
-                   'pyvesync.vesyncswitch']
+        modules = ['pyvesyncakerl.vesyncfan',
+                   'pyvesyncakerl.vesyncbulb',
+                   'pyvesyncakerl.vesyncoutlet',
+                   'pyvesyncakerl.vesyncswitch']
         for mod in modules:
             import_mod = importlib.import_module(mod)
 
@@ -96,7 +96,7 @@ class TestVesync(unittest.TestCase):
         mock_vesync.login.return_value = False
         self.assertFalse(mock_vesync.login())
 
-        with patch('pyvesync.helpers.Helpers.call_api') as mocked_post:
+        with patch('pyvesyncakerl.helpers.Helpers.call_api') as mocked_post:
             d = {
                 'result': {
                     'accountID': '12346536',
@@ -119,7 +119,7 @@ class TestVesync(unittest.TestCase):
 class TestApiFunc:
     """Test call_api() method."""
 
-    @patch('pyvesync.helpers.requests.get', autospec=True)
+    @patch('pyvesyncakerl.helpers.requests.get', autospec=True)
     def test_api_get(self, get_mock):
         """Test get api call."""
         get_mock.return_value = Mock(ok=True, status_code=200)
@@ -129,7 +129,7 @@ class TestApiFunc:
 
         assert mock_return == ({'code': 0}, 200)
 
-    @patch('pyvesync.helpers.requests.post', autospec=True)
+    @patch('pyvesyncakerl.helpers.requests.post', autospec=True)
     def test_api_post(self, post_mock):
         """Test post api call."""
         post_mock.return_value = Mock(ok=True, status_code=200)
@@ -139,7 +139,7 @@ class TestApiFunc:
 
         assert mock_return == ({'code': 0}, 200)
 
-    @patch('pyvesync.helpers.requests.put', autospec=True)
+    @patch('pyvesyncakerl.helpers.requests.put', autospec=True)
     def test_api_put(self, put_mock):
         """Test put api call."""
         put_mock.return_value = Mock(ok=True, status_code=200)
@@ -149,7 +149,7 @@ class TestApiFunc:
 
         assert mock_return == ({'code': 0}, 200)
 
-    @patch('pyvesync.helpers.requests.get', autospec=True)
+    @patch('pyvesyncakerl.helpers.requests.get', autospec=True)
     def test_api_bad_response(self, api_mock):
         """Test bad API response handling."""
         api_mock.side_effect = MagicMock(status_code=400)

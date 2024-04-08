@@ -3,7 +3,7 @@
 import logging
 import json
 from typing import Optional, Union
-from pyvesync.helpers import Helpers as helper
+from pyvesyncakerl.helpers import Helpers as helper
 logger = logging.getLogger(__name__)
 
 

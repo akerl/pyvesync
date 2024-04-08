@@ -2,15 +2,15 @@
 
 import pytest
 from unittest.mock import patch
-import pyvesync
+import pyvesyncakerl
 import logging
 import copy
 import time
 from itertools import chain
-from pyvesync.vesyncfan import *
-from pyvesync.vesyncbulb import *
-from pyvesync.vesyncoutlet import *
-from pyvesync.vesyncswitch import *
+from pyvesyncakerl.vesyncfan import *
+from pyvesyncakerl.vesyncbulb import *
+from pyvesyncakerl.vesyncoutlet import *
+from pyvesyncakerl.vesyncswitch import *
 import call_json as json_vals
 from call_json_switches import SWITCHES_NUM
 from call_json_outlets import OUTLETS_NUM
@@ -34,11 +34,11 @@ class TestDeviceList(object):
     @pytest.fixture(scope='function')
     def api_mock(self, caplog):
         """Mock call_api and initialize VeSync object."""
-        self.mock_api_call = patch('pyvesync.helpers.Helpers.call_api')
+        self.mock_api_call = patch('pyvesyncakerl.helpers.Helpers.call_api')
         self.mock_api = self.mock_api_call.start()
         self.mock_api.create_autospec()
         self.mock_api.return_value.ok = True
-        self.vesync_obj = pyvesync.vesync.VeSync('sam@mail.com', 'pass', debug=True)
+        self.vesync_obj = pyvesyncakerl.vesync.VeSync('sam@mail.com', 'pass', debug=True)
         self.vesync_obj.enabled = True
         self.vesync_obj.token = 'sample_tk'
         self.vesync_obj.account_id = 'sample_id'
@@ -60,12 +60,12 @@ class TestDeviceList(object):
         assert call_p2['headers'] == head
         assert self.vesync_obj.enabled
 
-    @patch('pyvesync.vesync.VeSyncOutlet7A')
-    @patch('pyvesync.vesync.VeSyncOutlet15A')
-    @patch('pyvesync.vesync.VeSyncOutlet10A')
-    @patch('pyvesync.vesync.VeSyncWallSwitch')
-    @patch('pyvesync.vesync.VeSyncDimmerSwitch')
-    @patch('pyvesync.vesync.VeSyncAir131')
+    @patch('pyvesyncakerl.vesync.VeSyncOutlet7A')
+    @patch('pyvesyncakerl.vesync.VeSyncOutlet15A')
+    @patch('pyvesyncakerl.vesync.VeSyncOutlet10A')
+    @patch('pyvesyncakerl.vesync.VeSyncWallSwitch')
+    @patch('pyvesyncakerl.vesync.VeSyncDimmerSwitch')
+    @patch('pyvesyncakerl.vesync.VeSyncAir131')
     def test_getdevs_vsfact(
         self, air_patch, wsdim_patch, ws_patch, out10a_patch, out15a_patch, out7a_patch, api_mock
     ):
@@ -179,7 +179,7 @@ class TestDeviceList(object):
 
         unknown_dev['devType'] = 'UNKNOWN-DEVTYPE'
 
-        pyvesync.vesync.object_factory('unknown_device', unknown_dev, self.vesync_obj)
+        pyvesyncakerl.vesync.object_factory('unknown_device', unknown_dev, self.vesync_obj)
 
         assert len(caplog.records) == 1
         assert 'Unknown' in caplog.text
@@ -197,7 +197,7 @@ class TestDeviceList(object):
         time_check = self.vesync_obj.device_time_check()
         assert time_check is True
 
-    @patch('pyvesync.vesync.VeSyncOutlet7A', autospec=True)
+    @patch('pyvesyncakerl.vesync.VeSyncOutlet7A', autospec=True)
     def test_remove_device(self, outlet_patch, caplog, api_mock):
         """Test remove device test."""
         device = copy.deepcopy(json_vals.DeviceList.LIST_CONF_7A)
@@ -209,7 +209,7 @@ class TestDeviceList(object):
 
         new_list = [device]
         self.vesync_obj.outlets = [outlet_test]
-        device_exists = pyvesync.vesync.VeSync.remove_old_devices(
+        device_exists = pyvesyncakerl.vesync.VeSync.remove_old_devices(
             self.vesync_obj, new_list
         )
 
@@ -217,14 +217,14 @@ class TestDeviceList(object):
 
         del device['cid']
 
-        device_exists = pyvesync.vesync.VeSync.remove_dev_test(outlet_test, new_list)
+        device_exists = pyvesyncakerl.vesync.VeSync.remove_dev_test(outlet_test, new_list)
 
         assert device_exists is False
 
         assert len(caplog.records) == 2
         assert 'cid' in caplog.text
 
-    @patch('pyvesync.vesync.VeSyncOutdoorPlug', autospec=True)
+    @patch('pyvesyncakerl.vesync.VeSyncOutdoorPlug', autospec=True)
     def test_add_dev_test(self, outdoor_patch, caplog, api_mock):
         """Test add_device_test to return if device found in existing conf."""
         outdoor_inst = VeSyncOutdoorPlug(
@@ -272,13 +272,13 @@ class TestDeviceList(object):
 
         assert len(caplog.records) == 0
 
-    @patch('pyvesync.vesync.VeSyncOutlet7A', autospec=True)
-    @patch('pyvesync.vesync.VeSyncOutlet15A', autospec=True)
-    @patch('pyvesync.vesync.VeSyncOutlet10A', autospec=True)
-    @patch('pyvesync.vesync.VeSyncOutdoorPlug', autospec=True)
-    @patch('pyvesync.vesync.VeSyncBulbESL100', autospec=True)
-    @patch('pyvesync.vesync.VeSyncWallSwitch', autospec=True)
-    @patch('pyvesync.vesync.VeSyncAir131', autospec=True)
+    @patch('pyvesyncakerl.vesync.VeSyncOutlet7A', autospec=True)
+    @patch('pyvesyncakerl.vesync.VeSyncOutlet15A', autospec=True)
+    @patch('pyvesyncakerl.vesync.VeSyncOutlet10A', autospec=True)
+    @patch('pyvesyncakerl.vesync.VeSyncOutdoorPlug', autospec=True)
+    @patch('pyvesyncakerl.vesync.VeSyncBulbESL100', autospec=True)
+    @patch('pyvesyncakerl.vesync.VeSyncWallSwitch', autospec=True)
+    @patch('pyvesyncakerl.vesync.VeSyncAir131', autospec=True)
     def test_resolve_updates(
         self,
         air_patch,

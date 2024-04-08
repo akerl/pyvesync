@@ -4,8 +4,8 @@ import logging
 import json
 from typing import Union, Dict, Optional, NamedTuple
 from abc import ABCMeta, abstractmethod
-from pyvesync.helpers import Helpers as helpers, Color
-from pyvesync.vesyncbasedevice import VeSyncBaseDevice
+from pyvesyncakerl.helpers import Helpers as helpers, Color
+from pyvesyncakerl.vesyncbasedevice import VeSyncBaseDevice
 
 
 logger = logging.getLogger(__name__)

@@ -3,8 +3,8 @@
 import json
 import logging
 from typing import Any, Dict, List, Tuple, Union, Optional
-from pyvesync.vesyncbasedevice import VeSyncBaseDevice
-from pyvesync.helpers import Helpers, Timer
+from pyvesyncakerl.vesyncbasedevice import VeSyncBaseDevice
+from pyvesyncakerl.helpers import Helpers, Timer
 
 
 humid_features: dict = {

@@ -37,7 +37,7 @@ default dict but make sure to use `deepcopy` to avoid unintended side effects.
 """
 from copy import deepcopy
 from utils import FunctionResponses, Defaults
-from pyvesync import vesyncoutlet
+from pyvesyncakerl import vesyncoutlet
 
 OUTLETS = vesyncoutlet.outlet_modules.keys()
 OUTLETS_NUM = len(OUTLETS)

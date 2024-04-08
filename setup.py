@@ -1,4 +1,4 @@
-"""pyvesync setup script."""
+"""pyvesyncakerl setup script."""
 
 from os import path
 from setuptools import setup, find_packages
@@ -9,14 +9,14 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='pyvesync',
+    name='pyvesyncakerl',
     version='2.1.10',
-    description='pyvesync is a library to manage Etekcity\
+    description='pyvesyncakerl is a library to manage Etekcity\
                  Devices, Cosori Air Fryers and Levoit Air \
                      Purifiers run on the VeSync app.',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/webdjoe/pyvesync',
+    url='https://github.com/webdjoe/pyvesyncakerl',
     author='Mark Perdue, Joe Trabulsy',
     author_email='webdjoe@gmail.com',
     license='MIT',

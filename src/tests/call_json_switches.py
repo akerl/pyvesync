@@ -13,7 +13,7 @@ The default response is a tuple with the value ({"code": 0, "msg": "success"}, 2
 
 """
 from copy import deepcopy
-from pyvesync import vesyncswitch
+from pyvesyncakerl import vesyncswitch
 from utils import FunctionResponses, Defaults
 
 SWITCHES = vesyncswitch.switch_modules.keys()

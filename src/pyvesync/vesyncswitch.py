@@ -5,8 +5,8 @@ import json
 from abc import ABCMeta, abstractmethod
 from typing import Dict, Union, Optional
 
-from pyvesync.helpers import Helpers as helpers
-from pyvesync.vesyncbasedevice import VeSyncBaseDevice
+from pyvesyncakerl.helpers import Helpers as helpers
+from pyvesyncakerl.vesyncbasedevice import VeSyncBaseDevice
 
 logger = logging.getLogger(__name__)
 

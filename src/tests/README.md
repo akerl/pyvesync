@@ -1,6 +1,6 @@
-# The pyvesync testing library
+# The pyvesyncakerl testing library
 
-This is the testing suite for the pyvesync library. Each device that is added must include tests. This helps to maintain the consistency of the API as new devices are added and the backend is refactored.
+This is the testing suite for the pyvesyncakerl library. Each device that is added must include tests. This helps to maintain the consistency of the API as new devices are added and the backend is refactored.
 
 I've built a relatively simple framework to ease the burden of writing tests. There are some old tests that I had previously written that I've kept as I build the new framework but these tests were not comprehensive or portable. The files that begin with `test_x_` are these previous tests and can safely be ignored.
 
@@ -10,7 +10,7 @@ The structure of the framework is as follows:
 
 1. `call_json.py` - This file contains general functions and the device list builder. This file does not need to be edited when adding a device.
 2. `call_json_DEVICE.py` - This file contains device specific responses such as the `get_details()` response and specific method responses. This file pulls in the device type list from each module. The minimum addition is to add the appropriate response to the `DeviceDetails` class and the device type associated with that response in the `DETAILS_RESPONSES` dictionary. This file also contains the `DeviceDefaults` class which are specific to the device.
-3. `test_DEVICE.py`  - Each module in pyvesync has it's own test module, typically with one class that inherits the `utils.BaseTest` class. The class has two methods - `test_details()` and `test_methods()` that are parametrized by `utils.pytest_generate_tests`
+3. `test_DEVICE.py`  - Each module in pyvesyncakerl has it's own test module, typically with one class that inherits the `utils.BaseTest` class. The class has two methods - `test_details()` and `test_methods()` that are parametrized by `utils.pytest_generate_tests`
 4. `utils.py` - Contains the general default values for all devices in the `Defaults` class and the `TestBase` class that contains the fixture that instantiates the VS object and patches the `call_api()` method.
 5. `conftest.py` - Contains the `pytest_generate_tests` function that is used to parametrize the tests based on all device types listed in the respective modules.
 
@@ -47,7 +47,7 @@ tox -e testenv -- --write_api --overwrite
 
 ## Testing Process
 
-The first test run verifies that all of the devices defined in each pyvesync module have a corresponding response in each `call_json_DEVICE` module. This verifies that when a new device is added, a corresponding response is added to be tested.
+The first test run verifies that all of the devices defined in each pyvesyncakerl module have a corresponding response in each `call_json_DEVICE` module. This verifies that when a new device is added, a corresponding response is added to be tested.
 
 The testing framework takes the approach of verifying the response and request of each API call separately. The request side of the call is verified by recording the request for a mocked call. The requests are recorded into YAML files in the `api` folder of the tests directory, grouped in folders by module and file by device type.
 
@@ -213,7 +213,7 @@ class TestDevice(TestBase):
 
     def test_details(self):
         vesync_instance = self.manager
-        mock_api_object = self.mock_api # patch('pyvesync.helpers.call_api', autopspec=True)
+        mock_api_object = self.mock_api # patch('pyvesyncakerl.helpers.call_api', autopspec=True)
         mock_api_object.return_value = FunctionResponses['default']
         caplog = self.caplog
         assert vesync_instance.enabled is True
@@ -222,7 +222,7 @@ class TestDevice(TestBase):
 
 ## Test Structure
 
-Each module in the pyvesync library has an associated testing module, for example, `vesyncswitches` and `test_switches`. Most testing modules have one class, except for the `test_fans` module, which has separate classes for humidifiers and air purifiers.
+Each module in the pyvesyncakerl library has an associated testing module, for example, `vesyncswitches` and `test_switches`. Most testing modules have one class, except for the `test_fans` module, which has separate classes for humidifiers and air purifiers.
 
 The class inherits from the `TestBase` class in `utils.py` and is parametrized by `pytest_generate_tests` based on the method. The parameters are defined by the class attributes. The `base_methods` and `device_methods` class attributes define the method and arguments in a list of lists with the first item, the method name and the second optional item, the method kwargs. The `base_methods` class attribute defines methods that are common to all devices. The `device_methods` class attribute defines methods that are specific to the device type.
 

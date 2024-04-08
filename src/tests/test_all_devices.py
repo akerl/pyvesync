@@ -1,5 +1,5 @@
 """
-This tests all requests made by the pyvesync library with pytest.
+This tests all requests made by the pyvesyncakerl library with pytest.
 
 All tests inherit from the TestBase class which contains the fixtures
 and methods needed to run the tests.

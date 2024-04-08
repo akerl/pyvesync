@@ -1,6 +1,6 @@
-# pyvesync [![build status](https://img.shields.io/pypi/v/pyvesync.svg)](https://pypi.python.org/pypi/pyvesync) [![Build Status](https://dev.azure.com/webdjoe/pyvesync/_apis/build/status/webdjoe.pyvesync?branchName=master)](https://dev.azure.com/webdjoe/pyvesync/_build/latest?definitionId=4&branchName=master) [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/Naereen/badges/) [![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/) <!-- omit in toc -->
+# pyvesyncakerl [![build status](https://img.shields.io/pypi/v/pyvesyncakerl.svg)](https://pypi.python.org/pypi/pyvesyncakerl) [![Build Status](https://dev.azure.com/webdjoe/pyvesyncakerl/_apis/build/status/webdjoe.pyvesyncakerl?branchName=master)](https://dev.azure.com/webdjoe/pyvesyncakerl/_build/latest?definitionId=4&branchName=master) [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/Naereen/badges/) [![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/) <!-- omit in toc -->
 
-pyvesync is a library to manage VeSync compatible [smart home devices](#supported-devices)
+pyvesyncakerl is a library to manage VeSync compatible [smart home devices](#supported-devices)
 
 ## Table of Contents <!-- omit in toc -->
 
@@ -67,7 +67,7 @@ pyvesync is a library to manage VeSync compatible [smart home devices](#supporte
 Install the latest version from pip:
 
 ```bash
-pip install pyvesync
+pip install pyvesyncakerl
 ```
 
 ## Supported Devices
@@ -122,7 +122,7 @@ Cosori Air Fryer
 To start with the module:
 
 ```python
-from pyvesync import VeSync
+from pyvesyncakerl import VeSync
 
 manager = VeSync("EMAIL", "PASSWORD", "TIME_ZONE", debug=False, redact=True)
 manager.login()
@@ -630,7 +630,7 @@ They can be set through the `VeSyncAirFryer158.fryer_status` dataclass but shoul
 This is the a Timer DataClass that is used in the  `get_timer()` or `set_timer()` methods *only implemented for Levoit Core 200S and 300S Air Purifier*, will eventually integrate with remaining devices. This object is created when the device timer methods are called. **The `pause()`, `resume()` and `stop()` methods for this DataClass only impact the timer locally and do not update the API.**
 
 ```python
-from pyvesync.helpers import Timer
+from pyvesyncakerl.helpers import Timer
 
 timer = Timer(timer_duration=60, id=1)
 
@@ -866,7 +866,7 @@ VesyncOutlet.energy['week']['data'] # which itself is a list of values
 To make it easier to debug, there is a `debug` argument in the `VeSync` method. This prints out your device list and any other debug log messages.
 
 ```python
-import pyvesync.vesync as vs
+import pyvesyncakerl.vesync as vs
 
 manager = vs.VeSync('user', 'pass', debug=True)
 manager.login()
@@ -880,7 +880,7 @@ To make it easier to post logs online , there is a `redact` argument in the `VeS
 The dafault is set to True
 
 ```python
-import pyvesync.vesync as vs
+import pyvesyncakerl.vesync as vs
 
 manager = vs.VeSync('user', 'pass', debug=True, redact=True)
 manager.login()
@@ -898,15 +898,15 @@ mkdir python_test && cd python_test
 # Check Python version is 3.8 or higher
 python3 --version # or python --version or python3.8 --version
 # Create a new venv
-python3 -m venv pyvesync-venv
+python3 -m venv pyvesyncakerl-venv
 # Activate the venv on linux
-source pyvesync-venv/bin/activate
+source pyvesyncakerl-venv/bin/activate
 # or ....
-pyvesync-venv\Scripts\activate.ps1 # on powershell
-pyvesync-venv\Scripts\activate.bat # on command prompt
+pyvesyncakerl-venv\Scripts\activate.ps1 # on powershell
+pyvesyncakerl-venv\Scripts\activate.bat # on command prompt
 
 # Install branch to be tested into new virtual environment
-pip install git+https://github.com/webdjoe/pyvesync@BRANCHNAME
+pip install git+https://github.com/webdjoe/pyvesyncakerl@BRANCHNAME
 ```
 
 Test functionality with a script
@@ -917,7 +917,7 @@ Test functionality with a script
 import sys
 import logging
 import json
-from pyvesync import VeSync
+from pyvesyncakerl import VeSync
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
